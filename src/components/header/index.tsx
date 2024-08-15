@@ -26,7 +26,6 @@ export const Header = () => {
       window.location.reload();
     } catch (e) {
       console.log(e);
-    } finally {
     }
   }
 
@@ -44,21 +43,19 @@ export const Header = () => {
               }
               src={user?.photoURL}
             />
-            <Tooltip placement="bottom" text={"Logout"}>
-              <p
-                onClick={() => setModalVisible(true)}
-                className="hover:text-red-600 hover:translate-x-1 transition-all cursor-pointer"
-              >
-                <LogOut className="" />
-              </p>
-            </Tooltip>
+            <p
+              onClick={() => setModalVisible(true)}
+              className="hover:text-red-600 hover:translate-x-1 transition-all cursor-pointer"
+            >
+              <LogOut onClick={handleLogout} />
+            </p>
           </div>
         )}
         <ul className="flex gap-5 font-medium">
           <li className="flex items-center gap-2 hover:gap-3 transition-all text-[18px]">
             <Code className="w-4 h-4" />
             <Link
-              href=""
+              href="#"
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
@@ -70,7 +67,7 @@ export const Header = () => {
           <li className="flex items-center gap-2 hover:gap-3 transition-all text-[18px]">
             <Globe className="w-4 h-4" />
             <Link
-              href=""
+              href="#"
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
@@ -81,7 +78,7 @@ export const Header = () => {
           <li className="flex items-center gap-2 hover:gap-3 transition-all text-[18px]">
             <Play className="w-4 h-4" />
             <Link
-              href=""
+              href="#"
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
@@ -104,17 +101,12 @@ export const Header = () => {
         </a>
       </div>
 
-      <Modal visible={modalVisible} onClose={() => closeHandler(event)}>
+      {/* <Modal visible={modalVisible} onClose={() => closeHandler(event)}>
         <Modal.Content>
           <p className="text-center">Are you really wanna logout?</p>
         </Modal.Content>
-        <Modal.Action passive={false} onClick={() => setModalVisible(false)}>
-          No
-        </Modal.Action>
-        <Modal.Action onClick={() => handleLogout()}>
-          Yes
-        </Modal.Action>
-      </Modal>
+        <Modal.Action onClick={handleLogout}>Yes</Modal.Action>
+      </Modal> */}
     </div>
   );
 };
