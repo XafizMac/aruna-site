@@ -31,3 +31,13 @@ body {
     text-wrap: balance;
   }
 }
+
+.primary {
+  background: linear-gradient(40deg, violet, blue);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.primary-btn{
+  @apply border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:from-inherit w-auto rounded-xl border bg-gray-200 p-4 dark:bg-zinc-800/30
+}
