@@ -3,41 +3,57 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))
+        )
+        rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
 }
 
 .primary {
-  background: linear-gradient(40deg, violet, blue);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+    background: linear-gradient(40deg, violet, blue);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
-.primary-btn{
-  @apply border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:from-inherit w-auto rounded-xl border bg-gray-200 p-4 dark:bg-zinc-800/30
+.component {
+    @apply rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30
+}
+
+.abort-btn{
+    @apply text-black rounded-md cursor-pointer dark:text-white border border-transparent px-3 py-2 transition-colors hover:border-gray-400 hover:dark:bg-neutral-800/30; 
+}
+
+.primary-btn {
+    @apply text-black dark:text-white font-medium border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:from-inherit w-full rounded-xl border bg-gray-200 p-4 dark:bg-zinc-800/30;
+}
+
+.primary-btn-md {
+    @apply text-black dark:text-white font-medium border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl dark:border-neutral-800 dark:from-inherit w-full rounded-md border bg-gray-200 p-2 dark:bg-zinc-800/30;
+}
+
+.input {
+    @apply w-full text-white
 }

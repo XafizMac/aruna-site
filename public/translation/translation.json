@@ -1,0 +1,18 @@
+{
+    "ru": {
+        "header": {
+            "loginbtn": "Войти"
+        },
+        "main": {
+            "title": ["Повышайте свой уровень с нашей платформы &", " От пешки до Короля"]
+        }
+    },
+    "en": {
+        "header": {
+            "loginbtn": "Login"
+        },
+        "main": {
+            "title": ["Level up with our platform &", " From pawn to King"]
+        }
+    }
+}
