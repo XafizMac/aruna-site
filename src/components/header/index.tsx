@@ -54,7 +54,7 @@ export const Header = () => {
       {/* Menu */}
       <div className="fixed left-0 top-0 flex items-center gap-7 w-full lg:justify-end bg-gradient-to-b from-zinc-200 lg:bg-none pb-6 pt-8 backdrop-blur-2xl dark:from-inherit lg:static">
         {token ? (
-          <div className="flex items-center gap-1">
+          <div className="flex px-3 items-center justify-between lg:justify-end w-full gap-1">
             <User
               src={user?.photoURL}
               name={<p className="font-medium text-black dark:text-white">{user?.displayName}</p>}

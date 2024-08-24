@@ -3,8 +3,6 @@
 import { User } from "@/types/auth";
 import { createContext, useState, ReactNode, useContext } from "react";
 
-
-
 interface AppContextType {
   user: User | undefined;
   setUser: (user: User) => void;

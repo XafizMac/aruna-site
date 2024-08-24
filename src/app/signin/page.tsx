@@ -25,13 +25,15 @@ const SignIn = () => {
     await signInWithEmailAndPassword(email, password)
       .then(async (response) => {
         if (response !== undefined) {
-          const token =  await response.user.getIdTokenResult();
+          const token = await response.user.getIdTokenResult();
           await axios.post("/api/login");
-          localStorage.setItem('token', JSON.stringify(token));
-          localStorage.setItem("user", JSON.stringify(response.user));
-          setUser(response?.user as User);
-          console.log(response.user);
-          // router.push("/");
+          localStorage.setItem("token", JSON.stringify(token));
+          localStorage.setItem("user", JSON.stringify({
+            displayName: "Ghost",
+            email,
+            photoURL: "https://github.com/shadcn.png",
+          }));
+          router.push("/");
         } else {
           setToast({
             text: "Sign up failed",

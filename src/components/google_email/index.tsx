@@ -19,13 +19,16 @@ export default function SignInWithGoogleAndEmail() {
   const handleSignInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleAuthProvider);
-      await axios.post("/api/login");
+      await axios.post("/api/login", {
+        username: result.user.displayName,
+        email: result.user.email,
+      });
       const userToken = await result.user.getIdTokenResult();
       localStorage.setItem("token", JSON.stringify(userToken.token));
       localStorage.setItem("user", JSON.stringify(result.user));
       setToken(userToken.token);
       setUser(result.user as User);
-      window.location.reload();
+      // window.location.reload();
     } catch (e) {
       setToast({
         text: "Login not successfull",

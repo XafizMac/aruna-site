@@ -4,7 +4,7 @@ import { Content } from "@/components/content";
 import { Header } from "@/components/header";
 import { useGlobalContext } from "@/context";
 import { Language, useLangStore } from "@/store/lang_store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const { setToken, setUser, setLoading } = useGlobalContext();
@@ -19,7 +19,7 @@ export default function Home() {
     if (lang) {
       setLang(lang as Language);
     } else {
-      setLang('en')
+      setLang("en");
     }
   }, []);
 

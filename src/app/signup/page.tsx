@@ -1,31 +1,31 @@
 "use client";
-import { useGlobalContext } from "@/context";
+
 // Регистрация
 import { auth } from "@/firebase";
-import { User } from "@/types/auth";
 import { Button, Input, Text, useToasts } from "@geist-ui/core";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 export default function SignUp() {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const { setToast } = useToasts({ placement: "topRight" });
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
-  const { setUser } = useGlobalContext();
   const router = useRouter();
 
   async function handleSubmit(e: any) {
     e.preventDefault();
     setLoading(true);
     await createUserWithEmailAndPassword(email, password)
-      .then((response) => {
+      .then(async (response) => {
         if (response !== undefined) {
-          console.log(response.user);
-          // router.push("/signin");
+          await createNewUser();
+          router.push("/signin");
         } else {
           setToast({
             text: "Sign up failed",
@@ -47,10 +47,30 @@ export default function SignUp() {
       });
   }
 
+  const createNewUser = async () => {
+    try {
+      await axios.post("/api/user/create", {
+        username,
+        email,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <form className="flex flex-col items-start gap-2 bg-white dark:border dark:border-neutral-700 dark:bg-neutral-800/30 p-12 rounded-lg shadow-2xl">
         <Text className="text-xl mb-3">Sign Up</Text>
+        <Input
+          onChange={(e) => setUsername(e.target.value)}
+          width={"100%"}
+          placeholder="Username"
+          className="input"
+          crossOrigin={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        />
         <Input
           onChange={(e) => setEmail(e.target.value)}
           width={"100%"}
